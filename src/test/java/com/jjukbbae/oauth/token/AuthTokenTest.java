@@ -21,7 +21,7 @@ class AuthTokenTest {
     }
 
     @Test
-    public void testCreateAuthTokenWithIdAndExpiry() {
+    public void testCreateAuthToken_WithIdAndExpiry() {
         // given
         String userId = "testUser";
         Date expiry = new Date(System.currentTimeMillis() + 1000 * 60 * 10);  // 10분 후 만료
@@ -35,7 +35,7 @@ class AuthTokenTest {
     }
 
     @Test
-    public void testCreateAuthTokenWithIdRoleAndExpiry() {
+    public void testCreateAuthToken_WithIdRoleAndExpiry() {
         // given
         String userId = "testUser";
         String role = "ROLE_USER";
