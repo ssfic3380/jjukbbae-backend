@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.security.Key;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class AuthTokenTest {
 
@@ -30,8 +30,8 @@ class AuthTokenTest {
         AuthToken authToken = new AuthToken(userId, expiry, key);
 
         // then
-        assertNotNull(authToken);
-        assertNotNull(authToken.getToken());
+        assertThat(authToken).isNotNull();
+        assertThat(authToken.getToken()).isNotNull();
     }
 
     @Test
@@ -45,8 +45,8 @@ class AuthTokenTest {
         AuthToken authToken = new AuthToken(userId, role, expiry, key);
 
         // then
-        assertNotNull(authToken);
-        assertNotNull(authToken.getToken());
+        assertThat(authToken).isNotNull();
+        assertThat(authToken.getToken()).isNotNull();
     }
 
     @Test
@@ -60,7 +60,7 @@ class AuthTokenTest {
         boolean isValid = authToken.validate();
 
         // then
-        assertTrue(isValid);
+        assertThat(isValid).isTrue();
     }
 
     @Test
@@ -77,7 +77,7 @@ class AuthTokenTest {
         boolean isValid = authToken.validate();
 
         // then
-        assertFalse(isValid);
+        assertThat(isValid).isFalse();
     }
 
     @Test
@@ -92,9 +92,9 @@ class AuthTokenTest {
         Claims claims = authToken.getTokenClaims();
 
         // then
-        assertNotNull(claims);
-        assertEquals(userId, claims.getSubject());
-        assertEquals(role, claims.get("role"));
+        assertThat(claims).isNotNull();
+        assertThat(claims.getSubject()).isEqualTo(userId);
+        assertThat(claims.get("role")).isEqualTo(role);
     }
 
     @Test
@@ -108,7 +108,7 @@ class AuthTokenTest {
         Claims claims = authToken.getExpiredTokenClaims();
 
         // then
-        assertNotNull(claims);
-        assertEquals(userId, claims.getSubject());
+        assertThat(claims).isNotNull();
+        assertThat(claims.getSubject()).isEqualTo(userId);
     }
 }

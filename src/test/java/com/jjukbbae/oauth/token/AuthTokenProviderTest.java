@@ -9,7 +9,8 @@ import org.springframework.security.core.Authentication;
 import java.security.Key;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class AuthTokenProviderTest {
 
@@ -33,8 +34,8 @@ class AuthTokenProviderTest {
         AuthToken authToken = authTokenProvider.createAuthToken(userId, expiry);
 
         // then
-        assertNotNull(authToken);
-        assertNotNull(authToken.getToken());
+        assertThat(authToken).isNotNull();
+        assertThat(authToken.getToken()).isNotNull();
     }
 
     @Test
@@ -49,8 +50,8 @@ class AuthTokenProviderTest {
         AuthToken convertedAuthToken = authTokenProvider.convertAuthToken(tokenString);
 
         // then
-        assertNotNull(convertedAuthToken);
-        assertEquals(tokenString, convertedAuthToken.getToken());
+        assertThat(convertedAuthToken).isNotNull();
+        assertThat(convertedAuthToken.getToken()).isEqualTo(tokenString);
     }
 
     @Test
@@ -65,10 +66,10 @@ class AuthTokenProviderTest {
         Authentication authentication = authTokenProvider.getAuthentication(authToken);
 
         // then
-        assertNotNull(authentication);
-        assertEquals(userId, authentication.getName());
-        assertTrue(authentication.getAuthorities().stream()
-                .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals(role)));
+        assertThat(authentication).isNotNull();
+        assertThat(authentication.getName()).isEqualTo(userId);
+        assertThat(authentication.getAuthorities())
+                .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals(role));
     }
 
     @Test
@@ -78,8 +79,7 @@ class AuthTokenProviderTest {
         AuthToken authToken = authTokenProvider.convertAuthToken(invalidToken);
 
         // when & then
-        assertThrows(TokenValidFailedException.class, () -> {
-            authTokenProvider.getAuthentication(authToken);
-        });
+        assertThatThrownBy(() -> authTokenProvider.getAuthentication(authToken))
+                .isInstanceOf(TokenValidFailedException.class);
     }
 }
