@@ -236,5 +236,7 @@ gradle-app.setting
 
 application.yml
 application.properties
+application-test.yml
+application-test.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,git,java,gradle,intellij,visualstudiocode
