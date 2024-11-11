@@ -55,7 +55,7 @@ class AuthTokenProviderTest {
     }
 
     @Test
-    public void testGetAuthentication_Success() {
+    public void testGetAuthentication_WhenTokenValid_ThenReturnAuthentication() {
         // given
         String userId = "testUser";
         String role = "ROLE_USER";
@@ -73,7 +73,7 @@ class AuthTokenProviderTest {
     }
 
     @Test
-    public void testGetAuthentication_InvalidToken() {
+    public void testGetAuthentication_WhenTokenInvalid_ThenThrowTokenValidFailedException() {
         // given
         String invalidToken = "invalidTokenString";
         AuthToken authToken = authTokenProvider.convertAuthToken(invalidToken);

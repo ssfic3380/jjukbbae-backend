@@ -46,7 +46,7 @@ class OAuth2AuthorizationRequestBasedOnCookieRepositoryTest {
     }
 
     @Test
-    public void testSaveAuthorizationRequest_whenAuthorizationRequestIsNotNull_shouldSaveCookie() {
+    public void testSaveAuthorizationRequest_WhenRequestNotNull_ThenSaveCookie() {
         // given
         OAuth2AuthorizationRequest authorizationRequest = OAuth2AuthorizationRequest.authorizationCode()
                 .clientId("test-client-id")
@@ -65,7 +65,7 @@ class OAuth2AuthorizationRequestBasedOnCookieRepositoryTest {
     }
 
     @Test
-    public void testSaveAuthorizationRequest_whenAuthorizationRequestIsNull_shouldExpireAllRelevantCookies() {
+    public void testSaveAuthorizationRequest_WhenRequestNull_ThenExpireCookies() {
         // given
         OAuth2AuthorizationRequest authorizationRequest = null;
         Cookie oauthCookie = new Cookie(OAuth2AuthorizationRequestBasedOnCookieRepository.OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME, "test-value");

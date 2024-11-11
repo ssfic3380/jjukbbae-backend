@@ -27,7 +27,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    public void testSaveUser() {
+    public void testSaveUser_WhenValid_ThenSaveSuccessfully() {
         // given
         User user = new User("testUserId", "testUsername", "test@example.com", "Y", "http://test.com/profile.jpg", ProviderType.GOOGLE, RoleType.USER, LocalDateTime.now(), LocalDateTime.now());
 
@@ -41,7 +41,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    public void testSaveUser_NonUnique_ShouldThrowException() {
+    public void testSaveUser_WhenNonUnique_ThenThrowException() {
         // given
         User user1 = new User("testUserId", "testUsername", "test@example.com", "Y", "http://test.com/profile.jpg", ProviderType.GOOGLE, RoleType.USER, LocalDateTime.now(), LocalDateTime.now());
         User user2 = new User("testUserId", "testUsername", "test@example.com", "Y", "http://test.com/profile.jpg", ProviderType.GOOGLE, RoleType.USER, LocalDateTime.now(), LocalDateTime.now());

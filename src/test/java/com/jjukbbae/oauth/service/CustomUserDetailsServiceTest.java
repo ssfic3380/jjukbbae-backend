@@ -29,7 +29,7 @@ class CustomUserDetailsServiceTest {
     }
 
     @Test
-    public void testLoadUserByUsername_WithValidUsername_ShouldReturnUserDetails() {
+    public void testLoadUserByUsername_WhenUsernameExist_ThenReturnUserDetails() {
         // given
         User user = new User(
                 "testUserId",
@@ -53,7 +53,7 @@ class CustomUserDetailsServiceTest {
     }
 
     @Test
-    public void testLoadUserByUsername_WithInvalidUsername_ShouldThrowUsernameNotFoundException() {
+    public void testLoadUserByUsername_WhenUsernameNotExist_ThenThrowUsernameNotFoundException() {
         // given
         when(userRepository.findByUserId(anyString())).thenReturn(null);
 
@@ -64,7 +64,7 @@ class CustomUserDetailsServiceTest {
     }
 
     @Test
-    public void testLoadUserByUsername_WithNullUsername_ShouldThrowUsernameNotFoundException() {
+    public void testLoadUserByUsername_WhenUsernameNull_ThenThrowUsernameNotFoundException() {
         // given
         when(userRepository.findByUserId(null)).thenReturn(null);
 

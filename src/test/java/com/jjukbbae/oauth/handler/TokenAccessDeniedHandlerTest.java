@@ -27,7 +27,7 @@ class TokenAccessDeniedHandlerTest {
     }
 
     @Test
-    void testHandle_ShouldResolveException() throws Exception {
+    void testHandle_WhenTokenAccessDenied() throws Exception {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         MockHttpServletResponse response = new MockHttpServletResponse();

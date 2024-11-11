@@ -36,7 +36,7 @@ class TokenAuthenticationFilterTest {
     }
 
     @Test
-    void testDoFilterInternal_ValidToken_ShouldSetAuthentication() throws ServletException, IOException {
+    void testDoFilterInternal_WhenTokenValid_ThenSetAuthentication() throws ServletException, IOException {
         try (MockedStatic<HeaderUtil> mockedHeaderUtil = mockStatic(HeaderUtil.class)) {
             // given
             String validTokenString = "validToken";
@@ -59,7 +59,7 @@ class TokenAuthenticationFilterTest {
     }
 
     @Test
-    void testDoFilterInternal_InvalidToken_ShouldNotSetAuthentication() throws ServletException, IOException {
+    void testDoFilterInternal_WhenTokenInvalid_ThenNotSetAuthentication() throws ServletException, IOException {
         try (MockedStatic<HeaderUtil> mockedHeaderUtil = mockStatic(HeaderUtil.class)) {
             // given
             String invalidTokenString = "invalidToken";

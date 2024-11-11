@@ -21,7 +21,7 @@ class AuthTokenTest {
     }
 
     @Test
-    public void testCreateAuthToken_WithIdAndExpiry() {
+    public void testCreateAuthToken_WhenGivenIdAndExpiry_ThenCreateToken() {
         // given
         String userId = "testUser";
         Date expiry = new Date(System.currentTimeMillis() + 1000 * 60 * 10);  // 10분 후 만료
@@ -35,7 +35,7 @@ class AuthTokenTest {
     }
 
     @Test
-    public void testCreateAuthToken_WithIdRoleAndExpiry() {
+    public void testCreateAuthToken_WhenGivenIdRoleAndExpiry_ThenCreateToken() {
         // given
         String userId = "testUser";
         String role = "ROLE_USER";
@@ -50,7 +50,7 @@ class AuthTokenTest {
     }
 
     @Test
-    public void testValidate_Success() {
+    public void testValidate_WhenValid_ThenSucceed() {
         // given
         String userId = "testUser";
         Date expiry = new Date(System.currentTimeMillis() + 1000 * 60 * 10); // 10분 후 만료
@@ -64,7 +64,7 @@ class AuthTokenTest {
     }
 
     @Test
-    public void testValidate_Expired() throws InterruptedException {
+    public void testValidate_WhenExpired_ThenFail() throws InterruptedException {
         // given
         String userId = "testUser";
         Date expiry = new Date(System.currentTimeMillis() + 1000); // 1초 후 만료
@@ -81,7 +81,7 @@ class AuthTokenTest {
     }
 
     @Test
-    public void testGetTokenClaims_Success() {
+    public void testGetTokenClaims_WhenValid_ThenReturnClaims() {
         // given
         String userId = "testUser";
         String role = "ROLE_USER";
@@ -98,7 +98,7 @@ class AuthTokenTest {
     }
 
     @Test
-    public void testGetExpiredTokenClaims() {
+    public void testGetExpiredTokenClaims_WhenExpired_ThenReturnClaims() {
         // given
         String userId = "testUser";
         Date expiry = new Date(System.currentTimeMillis() - 1000); // 이미 만료된 토큰

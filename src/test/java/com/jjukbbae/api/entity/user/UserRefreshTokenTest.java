@@ -22,7 +22,7 @@ class UserRefreshTokenTest {
     }
 
     @Test
-    public void testUserRefreshToken_Valid() {
+    public void testUserRefreshToken_WhenValid_ThenCreateSuccessfully() {
         // given
         UserRefreshToken refreshToken = new UserRefreshToken("testUserId", "sampleRefreshToken");
 
@@ -34,7 +34,7 @@ class UserRefreshTokenTest {
     }
 
     @Test
-    public void testUserRefreshToken_Invalid_EmptyFields() {
+    public void testUserRefreshToken_WhenFieldsEmpty_ThenInvalid() {
         // given
         UserRefreshToken refreshToken = new UserRefreshToken();
 
@@ -46,7 +46,7 @@ class UserRefreshTokenTest {
     }
 
     @Test
-    public void testUserRefreshToken_Invalid_MaxSizeExceeded() {
+    public void testUserRefreshToken_WhenMaxSizeExceeded_ThenInvalid() {
         // given
         String longUserId = "a".repeat(65);
         String longRefreshToken = "b".repeat(257);

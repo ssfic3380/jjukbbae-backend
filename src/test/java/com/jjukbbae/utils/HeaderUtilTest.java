@@ -16,7 +16,7 @@ class HeaderUtilTest {
     }
 
     @Test
-    void testGetAccessToken_WithBearerToken() {
+    void testGetAccessToken_WhenBearerExists_ThenReturnAccessToken() {
         // given
         String token = "sampleToken";
         request.addHeader("Authorization", "Bearer " + token);
@@ -29,7 +29,7 @@ class HeaderUtilTest {
     }
 
     @Test
-    void testGetAccessToken_WithoutBearerToken() {
+    void testGetAccessToken_WhenBearerNotExists_ThenReturnEmpty() {
         // given
         String token = "sampleToken";
         request.addHeader("Authorization", token);

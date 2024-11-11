@@ -40,7 +40,7 @@ class CustomOAuth2UserServiceTest {
     }
 
     @Test
-    public void testProcess_WithValidUser_ShouldReturnUserPrincipal() {
+    public void testProcess_WhenUserExist_ThenReturnUserPrincipal() {
         // given
         OAuth2UserRequest userRequest = mock(OAuth2UserRequest.class);
         ClientRegistration clientRegistration = mock(ClientRegistration.class);
@@ -73,7 +73,7 @@ class CustomOAuth2UserServiceTest {
     }
 
     @Test
-    public void testProcess_WithNewUser_ShouldCreateAndReturnUserPrincipal() {
+    public void testProcess_WhenUserNotExist_ThenCreateAndReturnUserPrincipal() {
         // given
         OAuth2UserRequest userRequest = mock(OAuth2UserRequest.class);
         ClientRegistration clientRegistration = mock(ClientRegistration.class);
@@ -96,7 +96,7 @@ class CustomOAuth2UserServiceTest {
     }
 
     @Test
-    public void testProcess_WithMismatchedProvider_ShouldThrowException() {
+    public void testProcess_WhenProviderMismatched_ThenThrowException() {
         // given
         OAuth2UserRequest userRequest = mock(OAuth2UserRequest.class);
         ClientRegistration clientRegistration = mock(ClientRegistration.class);
@@ -127,7 +127,7 @@ class CustomOAuth2UserServiceTest {
     }
 
     @Test
-    public void testProcess_WithMismatchedProvider_AndUserUpdate_ShouldUpdateUserSuccessfully() {
+    public void testProcess_WhenProviderMismatchedAndUserUpdated_ThenUpdateUserSuccessfully() {
         // given
         OAuth2UserRequest userRequest = mock(OAuth2UserRequest.class);
         ClientRegistration clientRegistration = mock(ClientRegistration.class);

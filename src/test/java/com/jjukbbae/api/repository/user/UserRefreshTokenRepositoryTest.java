@@ -23,7 +23,7 @@ class UserRefreshTokenRepositoryTest {
     }
 
     @Test
-    public void testSaveUserRefreshToken() {
+    public void testSaveUserRefreshToken_WhenValid_ThenSaveSuccessfully() {
         // given
         UserRefreshToken refreshToken = new UserRefreshToken("testUserId", "sampleRefreshToken");
 
@@ -38,7 +38,7 @@ class UserRefreshTokenRepositoryTest {
     }
 
     @Test
-    public void testSaveUserRefreshToken_NonUnique_ShouldThrowException() {
+    public void testSaveUserRefreshToken_WhenNonUnique_ThenThrowException() {
         // given
         UserRefreshToken refreshToken1 = new UserRefreshToken("testUserId", "sampleRefreshToken1");
         UserRefreshToken refreshToken2 = new UserRefreshToken("testUserId", "sampleRefreshToken2");

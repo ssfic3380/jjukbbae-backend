@@ -25,7 +25,7 @@ class UserTest {
     }
 
     @Test
-    public void testUser_Valid() {
+    public void testUser_WhenValid_ThenCreateSuccessfully() {
         // given
         User user = new User("testUserId", "testUsername", "test@example.com", "Y", "http://test.com/profile.jpg", ProviderType.GOOGLE, RoleType.USER, LocalDateTime.now(), LocalDateTime.now());
 
@@ -37,7 +37,7 @@ class UserTest {
     }
 
     @Test
-    public void testUser_Invalid_EmptyFields() {
+    public void testUser_WhenFieldsEmpty_ThenInvalid() {
         // given
         User user = new User();
 
@@ -49,7 +49,7 @@ class UserTest {
     }
 
     @Test
-    public void testUser_Invalid_MaxSizeExceeded() {
+    public void testUser_WhenMaxSizeExceeded_ThenInvalid() {
         // given
         String longUserId = "a".repeat(65);
         String longUsername = "b".repeat(101);

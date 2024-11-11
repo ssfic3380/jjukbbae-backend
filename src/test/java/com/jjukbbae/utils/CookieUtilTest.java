@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 class CookieUtilTest {
 
     @Test
-    public void testGetCookie_whenCookieExists() {
+    public void testGetCookie_WhenCookieExists_ThenReturnCookie() {
         // given
         HttpServletRequest request = mock(HttpServletRequest.class);
         Cookie cookie = new Cookie("testName", "testValue");
@@ -29,7 +29,7 @@ class CookieUtilTest {
     }
 
     @Test
-    public void testGetCookie_whenCookieDoesNotExist() {
+    public void testGetCookie_WhenCookieDoesNotExist_ThenReturnEmptyOptional() {
         // given
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getCookies()).thenReturn(new Cookie[]{});
@@ -60,7 +60,7 @@ class CookieUtilTest {
     }
 
     @Test
-    public void testDeleteCookie_whenCookieExists() {
+    public void testDeleteCookie_WhenCookieExists_ThenDeleteSuccessfully() {
         // given
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
@@ -80,7 +80,7 @@ class CookieUtilTest {
     }
 
     @Test
-    public void testDeleteCookie_whenCookieDoesNotExist() {
+    public void testDeleteCookie_WhenCookieNotExist_ThenDoNothing() {
         // given
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
