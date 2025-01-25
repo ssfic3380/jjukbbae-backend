@@ -3,13 +3,9 @@ package com.jjukbbae.oauth.handler;
 import com.jjukbbae.api.entity.user.UserRefreshToken;
 import com.jjukbbae.api.repository.user.UserRefreshTokenRepository;
 import com.jjukbbae.config.properties.AppProperties;
-import com.jjukbbae.oauth.entity.ProviderType;
 import com.jjukbbae.oauth.info.OAuth2UserInfo;
-import com.jjukbbae.oauth.info.OAuth2UserInfoFactory;
-import com.jjukbbae.oauth.repository.OAuth2AuthorizationRequestBasedOnCookieRepository;
 import com.jjukbbae.oauth.token.AuthToken;
 import com.jjukbbae.oauth.token.AuthTokenProvider;
-import com.jjukbbae.utils.CookieUtil;
 import jakarta.servlet.http.Cookie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,9 +39,6 @@ public class OAuth2AuthenticationSuccessHandlerTest {
 
     @Mock
     private UserRefreshTokenRepository userRefreshTokenRepository;
-
-    @Mock
-    private OAuth2AuthorizationRequestBasedOnCookieRepository authorizationRequestRepository;
 
     @InjectMocks
     private OAuth2AuthenticationSuccessHandler successHandler;
